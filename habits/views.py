@@ -1,53 +1,47 @@
-from rest_framework import generics, permissions
+from rest_framework import generics, permissions, pagination, status
+from rest_framework.response import Response
 from habits.models import Habit
 from habits.serializers import HabitSerializer
 from habits.tasks import send_telegram_message
-from rest_framework.response import Response
-from rest_framework import status
 
-class HabitList(generics.ListCreateAPIView):
+
+class StandardResultsSetPagination(pagination.PageNumberPagination):
+    page_size = 5
+    page_size_query_param = 'page_size'
+    max_page_size = 100
+
+
+class HabitListCreateView(generics.ListCreateAPIView):
+    """
+    Список привычек текущего пользователя и создание новой.
+    Параметр ?public=true — для просмотра публичных привычек.
+    """
     serializer_class = HabitSerializer
     permission_classes = [permissions.IsAuthenticated]
+    pagination_class = StandardResultsSetPagination
 
     def get_queryset(self):
+        is_public = self.request.query_params.get('public')
+        if is_public == 'true':
+            return Habit.objects.filter(is_public=True)
         return Habit.objects.filter(user=self.request.user)
 
     def perform_create(self, serializer):
         habit = serializer.save(user=self.request.user)
 
         # Отправляем сообщение в Telegram при создании привычки
-        if habit.user.telegram_chat_id:  # Предполагаем, что у User есть поле telegram_chat_id
-            text = f"Создана привычка: {habit.action} в {habit.place} в {habit.time}"
-            send_telegram_message.delay(chat_id=habit.user.telegram_chat_id, text=text)
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        else:
-             return Response(serializer.data, status=status.HTTP_201_CREATED)
+        chat_id = getattr(habit.user, 'telegram_chat_id', None)
+        if chat_id:
+            message = f"Создана привычка: {habit.action} в {habit.place} в {habit.time}"
+            send_telegram_message.delay(chat_id=chat_id, text=message)
 
-class PublicHabitList(generics.ListAPIView):
-    serializer_class = HabitSerializer
-    permission_classes = [permissions.IsAuthenticated]
-    queryset = Habit.objects.filter(is_public=True)
 
-class HabitList(generics.ListCreateAPIView):
+class HabitDetailView(generics.RetrieveUpdateDestroyAPIView):
+    """
+    Получение, обновление и удаление привычки пользователя.
+    """
     serializer_class = HabitSerializer
     permission_classes = [permissions.IsAuthenticated]
 
     def get_queryset(self):
         return Habit.objects.filter(user=self.request.user)
-
-    def perform_create(self, serializer):
-        serializer.save(user=self.request.user)
-
-class HabitDetail(generics.RetrieveUpdateDestroyAPIView):
-    serializer_class = HabitSerializer
-    permission_classes = [permissions.IsAuthenticated]
-
-    def get_queryset(self):
-        return Habit.objects.filter(user=self.request.user)
-
-class PublicHabitList(generics.ListAPIView):
-    serializer_class = HabitSerializer
-    permission_classes = [permissions.IsAuthenticated]
-    queryset = Habit.objects.filter(is_public=True)
-
-
