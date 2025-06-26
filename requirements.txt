@@ -1,183 +1,52 @@
-(.venv) evgenijasakov@MacBook-Air-Evgenij habit_tracker % pytest -v -s
-
-========================================================================= test session starts =========================================================================
-platform darwin -- Python 3.10.11, pytest-8.4.1, pluggy-1.6.0 -- /Users/evgenijasakov/habit_tracker/.venv/bin/python
-cachedir: .pytest_cache
-django: version: 5.2.3, settings: config.settings (from ini)
-rootdir: /Users/evgenijasakov/habit_tracker
-configfile: pytest.ini
-plugins: anyio-4.9.0, django-4.11.1
-collected 17 items
-
-tests/tests_habits.py::test_create_habit_success Creating test database for alias 'default'...
-ERROR
-tests/tests_habits.py::test_create_invalid_execution_time ERROR
-tests/tests_habits.py::test_reward_and_related_habit_conflict ERROR
-tests/tests_habits.py::test_create_pleasant_with_reward ERROR
-tests/tests_habits.py::test_periodicity_too_high ERROR
-tests/tests_habits.py::test_get_user_habits ERROR
-tests/tests_habits.py::test_public_habits_list ERROR
-tests/tests_habits.py::test_create_valid_habit ERROR
-tests/tests_habits.py::test_public_habit_list_visible ERROR
-tests/tests_habits.py::test_invalid_habit_with_reward_and_related ERROR
-tests/tests_habits.py::test_invalid_execution_time ERROR
-tests/tests_habits.py::test_invalid_periodicity ERROR
-tests/tests_habits.py::test_pleasant_cannot_have_reward_or_related ERROR
-tests/tests_habits.py::test_telegram_sent ERROR
-tests/tests_users.py::test_register_user PASSED
-tests/tests_users.py::test_login_user PASSED
-tests/tests_users.py::test_login_with_wrong_credentials PASSEDDestroying test database for alias 'default'...
-
-
-=============================================================================== ERRORS ================================================================================
-_____________________________________________________________ ERROR at setup of test_create_habit_success _____________________________________________________________
-file /Users/evgenijasakov/habit_tracker/tests/tests_habits.py, line 5
-  @pytest.mark.django_db
-  def test_create_habit_success(auth_client):
-E       fixture 'auth_client' not found
->       available fixtures: _dj_autoclear_mailbox, _django_clear_site_cache, _django_db_helper, _django_db_marker, _django_set_urlconf, _django_setup_unittest, _fail_for_invalid_template_variable, _live_server_helper, _template_string_if_invalid_marker, admin_client, admin_user, anyio_backend, anyio_backend_name, anyio_backend_options, async_client, async_rf, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, client, db, django_assert_max_num_queries, django_assert_num_queries, django_capture_on_commit_callbacks, django_db_blocker, django_db_createdb, django_db_keepdb, django_db_modify_db_settings, django_db_modify_db_settings_parallel_suffix, django_db_modify_db_settings_tox_suffix, django_db_modify_db_settings_xdist_suffix, django_db_reset_sequences, django_db_serialized_rollback, django_db_setup, django_db_use_migrations, django_mail_dnsname, django_mail_patch_dns, django_test_environment, django_user_model, django_username_field, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, live_server, mailoutbox, monkeypatch, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, rf, settings, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, transactional_db
->       use 'pytest --fixtures [testpath]' for help on them.
-
-/Users/evgenijasakov/habit_tracker/tests/tests_habits.py:5
-________________________________________________________ ERROR at setup of test_create_invalid_execution_time _________________________________________________________
-file /Users/evgenijasakov/habit_tracker/tests/tests_habits.py, line 20
-  @pytest.mark.django_db
-  def test_create_invalid_execution_time(auth_client):
-E       fixture 'auth_client' not found
->       available fixtures: _dj_autoclear_mailbox, _django_clear_site_cache, _django_db_helper, _django_db_marker, _django_set_urlconf, _django_setup_unittest, _fail_for_invalid_template_variable, _live_server_helper, _template_string_if_invalid_marker, admin_client, admin_user, anyio_backend, anyio_backend_name, anyio_backend_options, async_client, async_rf, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, client, db, django_assert_max_num_queries, django_assert_num_queries, django_capture_on_commit_callbacks, django_db_blocker, django_db_createdb, django_db_keepdb, django_db_modify_db_settings, django_db_modify_db_settings_parallel_suffix, django_db_modify_db_settings_tox_suffix, django_db_modify_db_settings_xdist_suffix, django_db_reset_sequences, django_db_serialized_rollback, django_db_setup, django_db_use_migrations, django_mail_dnsname, django_mail_patch_dns, django_test_environment, django_user_model, django_username_field, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, live_server, mailoutbox, monkeypatch, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, rf, settings, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, transactional_db
->       use 'pytest --fixtures [testpath]' for help on them.
-
-/Users/evgenijasakov/habit_tracker/tests/tests_habits.py:20
-______________________________________________________ ERROR at setup of test_reward_and_related_habit_conflict _______________________________________________________
-file /Users/evgenijasakov/habit_tracker/tests/tests_habits.py, line 33
-  @pytest.mark.django_db
-  def test_reward_and_related_habit_conflict(auth_client, pleasant_habit):
-E       fixture 'auth_client' not found
->       available fixtures: _dj_autoclear_mailbox, _django_clear_site_cache, _django_db_helper, _django_db_marker, _django_set_urlconf, _django_setup_unittest, _fail_for_invalid_template_variable, _live_server_helper, _template_string_if_invalid_marker, admin_client, admin_user, anyio_backend, anyio_backend_name, anyio_backend_options, async_client, async_rf, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, client, db, django_assert_max_num_queries, django_assert_num_queries, django_capture_on_commit_callbacks, django_db_blocker, django_db_createdb, django_db_keepdb, django_db_modify_db_settings, django_db_modify_db_settings_parallel_suffix, django_db_modify_db_settings_tox_suffix, django_db_modify_db_settings_xdist_suffix, django_db_reset_sequences, django_db_serialized_rollback, django_db_setup, django_db_use_migrations, django_mail_dnsname, django_mail_patch_dns, django_test_environment, django_user_model, django_username_field, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, live_server, mailoutbox, monkeypatch, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, rf, settings, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, transactional_db
->       use 'pytest --fixtures [testpath]' for help on them.
-
-/Users/evgenijasakov/habit_tracker/tests/tests_habits.py:33
-_________________________________________________________ ERROR at setup of test_create_pleasant_with_reward __________________________________________________________
-file /Users/evgenijasakov/habit_tracker/tests/tests_habits.py, line 47
-  @pytest.mark.django_db
-  def test_create_pleasant_with_reward(auth_client):
-E       fixture 'auth_client' not found
->       available fixtures: _dj_autoclear_mailbox, _django_clear_site_cache, _django_db_helper, _django_db_marker, _django_set_urlconf, _django_setup_unittest, _fail_for_invalid_template_variable, _live_server_helper, _template_string_if_invalid_marker, admin_client, admin_user, anyio_backend, anyio_backend_name, anyio_backend_options, async_client, async_rf, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, client, db, django_assert_max_num_queries, django_assert_num_queries, django_capture_on_commit_callbacks, django_db_blocker, django_db_createdb, django_db_keepdb, django_db_modify_db_settings, django_db_modify_db_settings_parallel_suffix, django_db_modify_db_settings_tox_suffix, django_db_modify_db_settings_xdist_suffix, django_db_reset_sequences, django_db_serialized_rollback, django_db_setup, django_db_use_migrations, django_mail_dnsname, django_mail_patch_dns, django_test_environment, django_user_model, django_username_field, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, live_server, mailoutbox, monkeypatch, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, rf, settings, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, transactional_db
->       use 'pytest --fixtures [testpath]' for help on them.
-
-/Users/evgenijasakov/habit_tracker/tests/tests_habits.py:47
-_____________________________________________________________ ERROR at setup of test_periodicity_too_high _____________________________________________________________
-file /Users/evgenijasakov/habit_tracker/tests/tests_habits.py, line 61
-  @pytest.mark.django_db
-  def test_periodicity_too_high(auth_client):
-E       fixture 'auth_client' not found
->       available fixtures: _dj_autoclear_mailbox, _django_clear_site_cache, _django_db_helper, _django_db_marker, _django_set_urlconf, _django_setup_unittest, _fail_for_invalid_template_variable, _live_server_helper, _template_string_if_invalid_marker, admin_client, admin_user, anyio_backend, anyio_backend_name, anyio_backend_options, async_client, async_rf, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, client, db, django_assert_max_num_queries, django_assert_num_queries, django_capture_on_commit_callbacks, django_db_blocker, django_db_createdb, django_db_keepdb, django_db_modify_db_settings, django_db_modify_db_settings_parallel_suffix, django_db_modify_db_settings_tox_suffix, django_db_modify_db_settings_xdist_suffix, django_db_reset_sequences, django_db_serialized_rollback, django_db_setup, django_db_use_migrations, django_mail_dnsname, django_mail_patch_dns, django_test_environment, django_user_model, django_username_field, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, live_server, mailoutbox, monkeypatch, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, rf, settings, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, transactional_db
->       use 'pytest --fixtures [testpath]' for help on them.
-
-/Users/evgenijasakov/habit_tracker/tests/tests_habits.py:61
-_______________________________________________________________ ERROR at setup of test_get_user_habits ________________________________________________________________
-file /Users/evgenijasakov/habit_tracker/tests/tests_habits.py, line 73
-  @pytest.mark.django_db
-  def test_get_user_habits(auth_client):
-E       fixture 'auth_client' not found
->       available fixtures: _dj_autoclear_mailbox, _django_clear_site_cache, _django_db_helper, _django_db_marker, _django_set_urlconf, _django_setup_unittest, _fail_for_invalid_template_variable, _live_server_helper, _template_string_if_invalid_marker, admin_client, admin_user, anyio_backend, anyio_backend_name, anyio_backend_options, async_client, async_rf, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, client, db, django_assert_max_num_queries, django_assert_num_queries, django_capture_on_commit_callbacks, django_db_blocker, django_db_createdb, django_db_keepdb, django_db_modify_db_settings, django_db_modify_db_settings_parallel_suffix, django_db_modify_db_settings_tox_suffix, django_db_modify_db_settings_xdist_suffix, django_db_reset_sequences, django_db_serialized_rollback, django_db_setup, django_db_use_migrations, django_mail_dnsname, django_mail_patch_dns, django_test_environment, django_user_model, django_username_field, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, live_server, mailoutbox, monkeypatch, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, rf, settings, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, transactional_db
->       use 'pytest --fixtures [testpath]' for help on them.
-
-/Users/evgenijasakov/habit_tracker/tests/tests_habits.py:73
-______________________________________________________________ ERROR at setup of test_public_habits_list ______________________________________________________________
-file /Users/evgenijasakov/habit_tracker/tests/tests_habits.py, line 88
-  @pytest.mark.django_db
-  def test_public_habits_list(auth_client, user):
-E       fixture 'auth_client' not found
->       available fixtures: _dj_autoclear_mailbox, _django_clear_site_cache, _django_db_helper, _django_db_marker, _django_set_urlconf, _django_setup_unittest, _fail_for_invalid_template_variable, _live_server_helper, _template_string_if_invalid_marker, admin_client, admin_user, anyio_backend, anyio_backend_name, anyio_backend_options, async_client, async_rf, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, client, db, django_assert_max_num_queries, django_assert_num_queries, django_capture_on_commit_callbacks, django_db_blocker, django_db_createdb, django_db_keepdb, django_db_modify_db_settings, django_db_modify_db_settings_parallel_suffix, django_db_modify_db_settings_tox_suffix, django_db_modify_db_settings_xdist_suffix, django_db_reset_sequences, django_db_serialized_rollback, django_db_setup, django_db_use_migrations, django_mail_dnsname, django_mail_patch_dns, django_test_environment, django_user_model, django_username_field, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, live_server, mailoutbox, monkeypatch, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, rf, settings, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, transactional_db
->       use 'pytest --fixtures [testpath]' for help on them.
-
-/Users/evgenijasakov/habit_tracker/tests/tests_habits.py:88
-______________________________________________________________ ERROR at setup of test_create_valid_habit ______________________________________________________________
-file /Users/evgenijasakov/habit_tracker/tests/tests_habits.py, line 104
-  @pytest.mark.django_db
-  def test_create_valid_habit(auth_client):
-E       fixture 'auth_client' not found
->       available fixtures: _dj_autoclear_mailbox, _django_clear_site_cache, _django_db_helper, _django_db_marker, _django_set_urlconf, _django_setup_unittest, _fail_for_invalid_template_variable, _live_server_helper, _template_string_if_invalid_marker, admin_client, admin_user, anyio_backend, anyio_backend_name, anyio_backend_options, async_client, async_rf, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, client, db, django_assert_max_num_queries, django_assert_num_queries, django_capture_on_commit_callbacks, django_db_blocker, django_db_createdb, django_db_keepdb, django_db_modify_db_settings, django_db_modify_db_settings_parallel_suffix, django_db_modify_db_settings_tox_suffix, django_db_modify_db_settings_xdist_suffix, django_db_reset_sequences, django_db_serialized_rollback, django_db_setup, django_db_use_migrations, django_mail_dnsname, django_mail_patch_dns, django_test_environment, django_user_model, django_username_field, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, live_server, mailoutbox, monkeypatch, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, rf, settings, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, transactional_db
->       use 'pytest --fixtures [testpath]' for help on them.
-
-/Users/evgenijasakov/habit_tracker/tests/tests_habits.py:104
-__________________________________________________________ ERROR at setup of test_public_habit_list_visible ___________________________________________________________
-file /Users/evgenijasakov/habit_tracker/tests/tests_habits.py, line 117
-  @pytest.mark.django_db
-  def test_public_habit_list_visible(auth_client, user):
-E       fixture 'auth_client' not found
->       available fixtures: _dj_autoclear_mailbox, _django_clear_site_cache, _django_db_helper, _django_db_marker, _django_set_urlconf, _django_setup_unittest, _fail_for_invalid_template_variable, _live_server_helper, _template_string_if_invalid_marker, admin_client, admin_user, anyio_backend, anyio_backend_name, anyio_backend_options, async_client, async_rf, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, client, db, django_assert_max_num_queries, django_assert_num_queries, django_capture_on_commit_callbacks, django_db_blocker, django_db_createdb, django_db_keepdb, django_db_modify_db_settings, django_db_modify_db_settings_parallel_suffix, django_db_modify_db_settings_tox_suffix, django_db_modify_db_settings_xdist_suffix, django_db_reset_sequences, django_db_serialized_rollback, django_db_setup, django_db_use_migrations, django_mail_dnsname, django_mail_patch_dns, django_test_environment, django_user_model, django_username_field, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, live_server, mailoutbox, monkeypatch, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, rf, settings, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, transactional_db
->       use 'pytest --fixtures [testpath]' for help on them.
-
-/Users/evgenijasakov/habit_tracker/tests/tests_habits.py:117
-____________________________________________________ ERROR at setup of test_invalid_habit_with_reward_and_related _____________________________________________________
-file /Users/evgenijasakov/habit_tracker/tests/tests_habits.py, line 132
-  @pytest.mark.django_db
-  def test_invalid_habit_with_reward_and_related(auth_client, user):
-E       fixture 'auth_client' not found
->       available fixtures: _dj_autoclear_mailbox, _django_clear_site_cache, _django_db_helper, _django_db_marker, _django_set_urlconf, _django_setup_unittest, _fail_for_invalid_template_variable, _live_server_helper, _template_string_if_invalid_marker, admin_client, admin_user, anyio_backend, anyio_backend_name, anyio_backend_options, async_client, async_rf, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, client, db, django_assert_max_num_queries, django_assert_num_queries, django_capture_on_commit_callbacks, django_db_blocker, django_db_createdb, django_db_keepdb, django_db_modify_db_settings, django_db_modify_db_settings_parallel_suffix, django_db_modify_db_settings_tox_suffix, django_db_modify_db_settings_xdist_suffix, django_db_reset_sequences, django_db_serialized_rollback, django_db_setup, django_db_use_migrations, django_mail_dnsname, django_mail_patch_dns, django_test_environment, django_user_model, django_username_field, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, live_server, mailoutbox, monkeypatch, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, rf, settings, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, transactional_db
->       use 'pytest --fixtures [testpath]' for help on them.
-
-/Users/evgenijasakov/habit_tracker/tests/tests_habits.py:132
-____________________________________________________________ ERROR at setup of test_invalid_execution_time ____________________________________________________________
-file /Users/evgenijasakov/habit_tracker/tests/tests_habits.py, line 155
-  @pytest.mark.django_db
-  def test_invalid_execution_time(auth_client):
-E       fixture 'auth_client' not found
->       available fixtures: _dj_autoclear_mailbox, _django_clear_site_cache, _django_db_helper, _django_db_marker, _django_set_urlconf, _django_setup_unittest, _fail_for_invalid_template_variable, _live_server_helper, _template_string_if_invalid_marker, admin_client, admin_user, anyio_backend, anyio_backend_name, anyio_backend_options, async_client, async_rf, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, client, db, django_assert_max_num_queries, django_assert_num_queries, django_capture_on_commit_callbacks, django_db_blocker, django_db_createdb, django_db_keepdb, django_db_modify_db_settings, django_db_modify_db_settings_parallel_suffix, django_db_modify_db_settings_tox_suffix, django_db_modify_db_settings_xdist_suffix, django_db_reset_sequences, django_db_serialized_rollback, django_db_setup, django_db_use_migrations, django_mail_dnsname, django_mail_patch_dns, django_test_environment, django_user_model, django_username_field, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, live_server, mailoutbox, monkeypatch, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, rf, settings, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, transactional_db
->       use 'pytest --fixtures [testpath]' for help on them.
-
-/Users/evgenijasakov/habit_tracker/tests/tests_habits.py:155
-_____________________________________________________________ ERROR at setup of test_invalid_periodicity ______________________________________________________________
-file /Users/evgenijasakov/habit_tracker/tests/tests_habits.py, line 167
-  @pytest.mark.django_db
-  def test_invalid_periodicity(auth_client):
-E       fixture 'auth_client' not found
->       available fixtures: _dj_autoclear_mailbox, _django_clear_site_cache, _django_db_helper, _django_db_marker, _django_set_urlconf, _django_setup_unittest, _fail_for_invalid_template_variable, _live_server_helper, _template_string_if_invalid_marker, admin_client, admin_user, anyio_backend, anyio_backend_name, anyio_backend_options, async_client, async_rf, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, client, db, django_assert_max_num_queries, django_assert_num_queries, django_capture_on_commit_callbacks, django_db_blocker, django_db_createdb, django_db_keepdb, django_db_modify_db_settings, django_db_modify_db_settings_parallel_suffix, django_db_modify_db_settings_tox_suffix, django_db_modify_db_settings_xdist_suffix, django_db_reset_sequences, django_db_serialized_rollback, django_db_setup, django_db_use_migrations, django_mail_dnsname, django_mail_patch_dns, django_test_environment, django_user_model, django_username_field, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, live_server, mailoutbox, monkeypatch, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, rf, settings, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, transactional_db
->       use 'pytest --fixtures [testpath]' for help on them.
-
-/Users/evgenijasakov/habit_tracker/tests/tests_habits.py:167
-____________________________________________________ ERROR at setup of test_pleasant_cannot_have_reward_or_related ____________________________________________________
-file /Users/evgenijasakov/habit_tracker/tests/tests_habits.py, line 179
-  @pytest.mark.django_db
-  def test_pleasant_cannot_have_reward_or_related(auth_client, user):
-E       fixture 'auth_client' not found
->       available fixtures: _dj_autoclear_mailbox, _django_clear_site_cache, _django_db_helper, _django_db_marker, _django_set_urlconf, _django_setup_unittest, _fail_for_invalid_template_variable, _live_server_helper, _template_string_if_invalid_marker, admin_client, admin_user, anyio_backend, anyio_backend_name, anyio_backend_options, async_client, async_rf, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, client, db, django_assert_max_num_queries, django_assert_num_queries, django_capture_on_commit_callbacks, django_db_blocker, django_db_createdb, django_db_keepdb, django_db_modify_db_settings, django_db_modify_db_settings_parallel_suffix, django_db_modify_db_settings_tox_suffix, django_db_modify_db_settings_xdist_suffix, django_db_reset_sequences, django_db_serialized_rollback, django_db_setup, django_db_use_migrations, django_mail_dnsname, django_mail_patch_dns, django_test_environment, django_user_model, django_username_field, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, live_server, mailoutbox, monkeypatch, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, rf, settings, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, transactional_db
->       use 'pytest --fixtures [testpath]' for help on them.
-
-/Users/evgenijasakov/habit_tracker/tests/tests_habits.py:179
-________________________________________________________________ ERROR at setup of test_telegram_sent _________________________________________________________________
-file /Users/evgenijasakov/habit_tracker/tests/tests_habits.py, line 202
-  @pytest.mark.django_db
-  @patch("habits.tasks.send_telegram_message.delay")
-  def test_telegram_sent(mock_send, auth_client):
-E       fixture 'auth_client' not found
->       available fixtures: _dj_autoclear_mailbox, _django_clear_site_cache, _django_db_helper, _django_db_marker, _django_set_urlconf, _django_setup_unittest, _fail_for_invalid_template_variable, _live_server_helper, _template_string_if_invalid_marker, admin_client, admin_user, anyio_backend, anyio_backend_name, anyio_backend_options, async_client, async_rf, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, client, db, django_assert_max_num_queries, django_assert_num_queries, django_capture_on_commit_callbacks, django_db_blocker, django_db_createdb, django_db_keepdb, django_db_modify_db_settings, django_db_modify_db_settings_parallel_suffix, django_db_modify_db_settings_tox_suffix, django_db_modify_db_settings_xdist_suffix, django_db_reset_sequences, django_db_serialized_rollback, django_db_setup, django_db_use_migrations, django_mail_dnsname, django_mail_patch_dns, django_test_environment, django_user_model, django_username_field, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, live_server, mailoutbox, monkeypatch, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, rf, settings, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, transactional_db
->       use 'pytest --fixtures [testpath]' for help on them.
-
-/Users/evgenijasakov/habit_tracker/tests/tests_habits.py:202
-========================================================================== warnings summary ===========================================================================
-tests/tests_users.py::test_register_user
-  /Users/evgenijasakov/habit_tracker/.venv/lib/python3.10/site-packages/drf_yasg/views.py:84: DeprecationWarning: SwaggerJSONRenderer & SwaggerYAMLRenderer's `format` has changed to not include a `.` prefix, please silence this warning by setting `SWAGGER_USE_COMPAT_RENDERERS = False` in your Django settings and ensure your application works (check your URLCONF and swagger/redoc URLs).
-    warnings.warn(
-
--- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
-======================================================================= short test summary info =======================================================================
-ERROR tests/tests_habits.py::test_create_habit_success
-ERROR tests/tests_habits.py::test_create_invalid_execution_time
-ERROR tests/tests_habits.py::test_reward_and_related_habit_conflict
-ERROR tests/tests_habits.py::test_create_pleasant_with_reward
-ERROR tests/tests_habits.py::test_periodicity_too_high
-ERROR tests/tests_habits.py::test_get_user_habits
-ERROR tests/tests_habits.py::test_public_habits_list
-ERROR tests/tests_habits.py::test_create_valid_habit
-ERROR tests/tests_habits.py::test_public_habit_list_visible
-ERROR tests/tests_habits.py::test_invalid_habit_with_reward_and_related
-ERROR tests/tests_habits.py::test_invalid_execution_time
-ERROR tests/tests_habits.py::test_invalid_periodicity
-ERROR tests/tests_habits.py::test_pleasant_cannot_have_reward_or_related
-ERROR tests/tests_habits.py::test_telegram_sent
-=============================================================== 3 passed, 1 warning, 14 errors in 1.06s ===============================================================
-(.venv) evgenijasakov@MacBook-Air-Evgenij habit_tracker %
-
+adafruit-ampy==1.1.0
+amqp==5.3.1
+anyio==4.9.0
+asgiref==3.8.1
+billiard==4.2.1
+celery==5.5.3
+certifi==2025.6.15
+click==8.2.1
+click-didyoumean==0.3.1
+click-plugins==1.1.1
+click-repl==0.3.0
+dj-database-url==3.0.0
+Django==5.2.3
+django-cors-headers==4.7.0
+djangorestframework==3.16.0
+djangorestframework_simplejwt==5.5.0
+dotenv==0.9.9
+drf-yasg==1.21.10
+exceptiongroup==1.3.0
+h11==0.16.0
+httpcore==1.0.9
+httpx==0.28.1
+idna==3.10
+inflection==0.5.1
+iniconfig==2.1.0
+kombu==5.5.4
+mpremote==1.25.0
+packaging==25.0
+pluggy==1.6.0
+prompt_toolkit==3.0.51
+psycopg2==2.9.10
+psycopg2-binary==2.9.10
+Pygments==2.19.2
+PyJWT==2.9.0
+pyserial==3.5
+pytest==8.4.1
+pytest-django==4.11.1
+python-dateutil==2.9.0.post0
+python-dotenv==1.1.0
+python-telegram-bot==22.1
+pytz==2025.2
+PyYAML==6.0.2
+six==1.17.0
+sniffio==1.3.1
+sqlparse==0.5.3
+telegram==0.0.1
+tomli==2.2.1
+typing_extensions==4.14.0
+tzdata==2025.2
+uritemplate==4.2.0
+vine==5.1.0
+wcwidth==0.2.13
