@@ -1,15 +1,10 @@
-from rest_framework import generics, permissions, pagination, status
-from rest_framework.response import Response
+from django.core.exceptions import ValidationError as DjangoValidationError
+from rest_framework.exceptions import ValidationError as DRFValidationError
+from rest_framework import generics, permissions
 from habits.models import Habit
 from habits.serializers import HabitSerializer
+from habits.pagination import StandardResultsSetPagination
 from habits.tasks import send_telegram_message
-
-
-class StandardResultsSetPagination(pagination.PageNumberPagination):
-    page_size = 5
-    page_size_query_param = 'page_size'
-    max_page_size = 100
-
 
 class HabitListCreateView(generics.ListCreateAPIView):
     """
@@ -27,14 +22,17 @@ class HabitListCreateView(generics.ListCreateAPIView):
         return Habit.objects.filter(user=self.request.user)
 
     def perform_create(self, serializer):
-        habit = serializer.save(user=self.request.user)
+        try:
+            habit = serializer.save(user=self.request.user)
+            habit.full_clean()  # Валидация всех полей + .clean()
+            habit.save()
+        except DjangoValidationError as e:
+            raise DRFValidationError(e.message_dict)
 
-        # Отправляем сообщение в Telegram при создании привычки
         chat_id = getattr(habit.user, 'telegram_chat_id', None)
         if chat_id:
             message = f"Создана привычка: {habit.action} в {habit.place} в {habit.time}"
             send_telegram_message.delay(chat_id=chat_id, text=message)
-
 
 class HabitDetailView(generics.RetrieveUpdateDestroyAPIView):
     """
